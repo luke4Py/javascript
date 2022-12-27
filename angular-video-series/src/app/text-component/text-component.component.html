@@ -1,0 +1,101 @@
+<h2 style="text-align: center;"><strong>Text-component!</strong></h2>
+
+<h3><strong> *  <u>Interpolation</u></strong></h3>
+<button (click)=displayImage() style=" background:none; border:none; width: fit-content;">Title : {{ title }}</button>
+<br><br>
+<img [src]="title_img" [hidden]="imageIsHidden"/>
+<p> calling getMin(11,2) method :  {{getMin(11,2)}}</p>
+
+<h3> * <u>Property Binding ⤵️</u></h3>
+
+<div>
+    <ul>
+    <li><span [innerHTML] = 'backTitle' ></span></li>
+    </ul>
+</div>
+
+
+<div style="background-color: aquamarine;">
+<h3>  *  <u>Events ⤵️</u></h3>
+<ul>
+    <li>
+        <p><strong>Input Event</strong></p>
+        <p>- fired when the content changes. This includes mouse pastes and non-keyboard input.</p>
+        <input type="text" [value]="input_dummy" (input)="enableButton(value_input.value)" #value_input><br><br>
+        <!-- {{console.log(input_dummy)}} -->
+        <p>{{value_input.value}}</p>
+        <div>
+          <p>
+            - below button works on <strong>(Click)</strong> event, which is enabled only if there is content in the above input element.
+          </p>
+          <button [disabled]="IsDisabledClick" (click)="buttonClicked(value_input.value)">Click</button>
+        </div>
+    </li>
+    <li>
+        <p><strong>KeyUp event</strong></p>
+        <p>- fired when a key is released. This includes shift key, control key, and other keys that don't change the value of input elements.</p>
+        <input #keyupvalue type="text" (keyup)="keyupFunc(keyupvalue.value)"/>
+        <p>{{keyupvalue.value}}</p>
+    </li>
+    <li>
+        <p><strong>KeyUp.Space event</strong></p>
+        <p> - works whenever a space key is pressed on the keyboard</p>
+        <input #keyupspacevalue type="text" (keyup.space)="buttonClicked(keyupspacevalue.value)"/>
+        <p>{{keyupspacevalue.value}}</p>
+    </li>
+    <li>
+        <p><strong>KeyUp.enter event</strong></p>
+        <p> - works whenever a enter key is pressed on the keyboard</p>
+        <input #keyupentervalue type="text" (keyup.enter)="buttonClicked(keyupentervalue.value)"/>
+        <p>{{keyupentervalue.value}}</p>
+    </li>
+    <li>
+        <p><strong>KeyUp.shift event</strong></p>
+        <p> - works whenever a shift key is pressed on the keyboard</p>
+        <input #keyupshiftvalue type="text" (keyup.shift)="buttonClicked(keyupshiftvalue.value)"/>
+        <p>{{keyupshiftvalue.value}}</p>
+    </li>
+    <li>
+        <p><strong>Blurr event</strong></p>
+        <p> - works whenever user reaches the input element and later clicks outside the input with mouse</p>
+        <input #blurbutton type="text" (blur)="blurCall()"/>
+        <br> <br>
+        <button [disabled]="isDisabledBlurr" style="width: fit-content;">click Me</button>
+    </li>
+    <li>
+        <p><strong>Mouse Events</strong></p>
+        <ol>
+            <li>
+                <p> Mouse over</p>
+                <p> - triggers and event/function which enables/disables the button when mouse is hovered over the button</p>
+                <!-- <input #mousevent type="text" (mo)="blurCall()"/> -->
+                <!-- <br> <br> -->
+                <h1 (mouseover)="mouseOverCall()" #mouseover>
+                    <button [disabled]="isDisabledMouse" style="width: 200px;" #mouseoverbtn>click Me</button>
+                </h1>
+            </li>
+            <li>
+                <p><strong>Mouse leave event</strong></p>
+                <p> - works whenever user reaches the input element and later clicks outside the input with mouse</p>
+                <!-- <input #blurbutton type="text" (blur)="blurCall()"/> -->
+                <h1 (mouseleave)="mouseleaveCall()" #mouseleave style="background-color: red;">
+                    <button [disabled]="isDisabledMouseleave" style="width: fit-content;" #mouseleavebtn>click Me</button>
+                    <p [innerHTML]="this.isDisabledMouseleave"></p>
+                </h1>
+            </li>
+        </ol>
+    </li>
+
+</ul>
+
+<h3>calling a function </h3>
+<div>
+    <ul>
+    <li>
+        <button style="width: fit-content;" (click)="buttonClicked(buttonStatus)">click Me</button>
+    </li>
+    </ul>
+</div>
+
+<h2 style="text-align: center;">--- * Test Component End * ---</h2>
+</div>
